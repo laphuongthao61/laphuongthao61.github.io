@@ -25,6 +25,7 @@
       overflow-x:hidden;
     }
 
+    /* ⭐ BACKGROUND LAYER */
     body::before{
       content:"";
       position:fixed;
@@ -33,6 +34,7 @@
       z-index:-3;
     }
 
+    /* ⭐ STARFIELD LAYER */
     body::after{
       content:"";
       position:fixed;
@@ -48,6 +50,7 @@
       to {transform:translateY(-2000px)}
     }
 
+    /* 🌍 PLANETS */
     .planet{
       position:fixed;
       border-radius:50%;
@@ -66,26 +69,31 @@
       width:260px;height:260px;
       background:radial-gradient(circle, #7a5cff, #3c1aff);
       top:8%;left:-70px;
+      animation-duration:180s;
     }
 
     #planet2{
       width:200px;height:200px;
       background:radial-gradient(circle, #ff6bd6, #9c1460);
       bottom:10%;right:-60px;
+      animation-duration:230s;
     }
 
     #planet3{
       width:140px;height:140px;
       background:radial-gradient(circle, #4df7ff,#007985);
       top:65%;left:30%;
+      animation-duration:150s;
     }
 
+    /* CONTENT WRAPPER */
     .wrap{
       max-width:var(--maxw);
       margin:36px auto;
       padding:28px;
     }
 
+    /* HEADER */
     .top{
       display:flex;
       gap:28px;
@@ -125,15 +133,12 @@
       transform:translateY(-2px);
     }
 
+    /* GRID */
     main{
       display:grid;
       grid-template-columns:1fr;
       gap:24px;
       margin-top:28px;
-    }
-
-    @media(min-width:860px){
-      main{grid-template-columns:2fr 1fr}
     }
 
     .card{
@@ -143,65 +148,131 @@
       border:1px solid rgba(255,255,255,0.12);
       box-shadow:0 6px 24px rgba(0,0,0,0.5);
       backdrop-filter:blur(12px);
+      transition:0.3s;
+    }
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 36px rgba(0,0,0,0.7);
     }
 
     h2{margin:0 0 12px;color:#d8e5ff}
     p{line-height:1.6;color:#d9e5ff}
+
+    /* PROJECTS */
+    .projects{display:grid;gap:14px}
+    .proj{display:flex;gap:14px}
+    .proj img{
+      width:120px;height:80px;
+      object-fit:cover;
+      border-radius:10px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.6);
+    }
+
+    /* RESPONSIVE */
+    @media(min-width:860px){
+      main{grid-template-columns:2fr 1fr}
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- PLANETS -->
   <div id="planet1" class="planet"></div>
   <div id="planet2" class="planet"></div>
   <div id="planet3" class="planet"></div>
 
   <div class="wrap">
 
+    <!-- HEADER -->
     <header class="top">
       <img class="profile-pic" src="images/avatar.png" alt="La Phuong Thao">
-      <div>
+      <div class="hdr">
         <h1 class="name">La Phuong Thao</h1>
         <div class="title">Student · International Business Economics · FTU</div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="links" style="display:flex;gap:12px;flex-wrap:wrap">
           <a class="pill" href="mailto:laphuongthao1561@gmail.com">Email</a>
-          <a class="pill" href="data/CV.pdf" target="_blank">CV</a>
+          <a class="pill" href="data/CV%20-%20NGUYEN%20DIEU%20NGOC%20-%20INTERN.pdf" target="_blank">CV</a>
+          <a class="pill" href="#projects">Projects</a>
           <a class="pill" href="#contact">Contact</a>
         </div>
       </div>
     </header>
 
+    <!-- MAIN -->
     <main>
       <section>
         <div class="card">
           <h2>About</h2>
           <p>
-            I'm a junior student at Foreign Trade University (FTU), working on export–import,
+            I'm a junior student at Foreign Trade University (FTU), working on export - import,
             logistics, digital transformation and data-driven economic analysis.
+            My interests include supply chain optimization, last-mile delivery,
+            and applications of machine learning in operations.
           </p>
         </div>
+
+        <div id="experience" class="card" style="margin-top:16px">
+          <h2>Experience</h2>
+
+          <div class="projects">
+
+            <article class="proj">
+              <img src="images/Screenshot 2025-12-08 224606.png">
+              <div class="meta">
+                <div class="title">HTC — Marketing Intern</div>
+                <div class="authors"><strong>Mar 2025 – Jun 2025</strong></div>
+                <ul style="margin:6px 0 0 16px; padding:0; color:#d9e5ff;">
+                  <li>Assisted in executing product marketing campaigns.</li>
+                  <li>Performed market analysis and weekly reporting.</li>
+                  <li>Managed social media content and engagement tracking.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="proj">
+              <img src="images/Screenshot 2025-12-08 224638.png">
+              <div class="meta">
+                <div class="title">Green Tech Global — Export Intern</div>
+                <div class="authors"><strong>2025 – Present</strong></div>
+                <ul style="margin:6px 0 0 16px; padding:0; color:#d9e5ff;">
+                  <li>Prepared quotations, export documents, and contracts.</li>
+                  <li>Communicated with international clients.</li>
+                  <li>Supported market analysis and customer database building.</li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
       </section>
 
+      <!-- RIGHT PANEL -->
       <aside>
         <div id="contact" class="card">
           <h2>Contact</h2>
-          <p>Email: 
-            <a href="mailto:laphuongthao1561@gmail.com" style="color:#a9d4ff">
-              laphuongthao1561@gmail.com
-            </a>
-          </p>
+          <p>Email: <a href="mailto:laphuongthao1561@gmail.com" style="color:#a9d4ff">laphuongthao1561@gmail.com</a></p>
           <p>Location: Hanoi, Vietnam</p>
-          <p>
-            <a href="https://www.linkedin.com/in/l%C3%A3-ph%C6%B0%C6%A1ng-th%E1%BA%A3o-166783228/" 
-               style="color:#a9d4ff">
-              LinkedIn
-            </a>
+          <p>Links:</p>
+          <p><a href="https://github.com/yourusername" style="color:#a9d4ff">Github</a> • 
+             <a href="https://www.linkedin.com/in/l%C3%A3-ph%C6%B0%C6%A1ng-th%E1%BA%A3o-166783228/" style="color:#a9d4ff">LinkedIn</a>
           </p>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h2>Skills</h2>
+          <p>Logistics Modeling · Optimization · Python · SQL · Data Analysis · Research Design</p>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h2>Short CV</h2>
+          <p>FTU — International Business Economics / 2027 • Green Tech Global - Export Intern</p>
         </div>
       </aside>
     </main>
 
-    <footer style="margin-top:36px;text-align:center;color:#b7c6e3;font-size:14px">
+    <footer style="margin-top:36px;padding:18px;text-align:center;color:#b7c6e3;font-size:14px">
       Built with a custom galaxy template ✦
     </footer>
 
