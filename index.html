@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>La Phuong Thao — Portfolio</title>
   <meta name="description" content="Personal academic / portfolio website" />
+
+  <!-- Inter font (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -17,57 +19,19 @@
       --card:#ffffff;
       --radius:14px;
       --maxw:1000px;
+
+      /* ✅ ONE FONT for whole site */
       font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
     html,body{
-  height:100%;
-  margin:0;
-  color:#0b1020;
-  background:var(--bg);
-  overflow-x:hidden;
-}
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      overflow-x:hidden;
 
-   
-    @keyframes floatStars {
-      from {transform:translateY(0)}
-      to {transform:translateY(-2000px)}
-    }
-
-    /* 🌍 PLANETS */
-    .planet{
-      position:fixed;
-      border-radius:50%;
-      filter:blur(0.6px);
-      opacity:0.9;
-      z-index:-1;
-      animation:spin 160s linear infinite;
-    }
-
-    @keyframes spin {
-      from {transform:rotate(0deg)}
-      to {transform:rotate(360deg)}
-    }
-
-    #planet1{
-      width:260px;height:260px;
-      background:radial-gradient(circle, #7a5cff, #3c1aff);
-      top:8%;left:-70px;
-      animation-duration:180s;
-    }
-
-    #planet2{
-      width:200px;height:200px;
-      background:radial-gradient(circle, #ff6bd6, #9c1460);
-      bottom:10%;right:-60px;
-      animation-duration:230s;
-    }
-
-    #planet3{
-      width:140px;height:140px;
-      background:radial-gradient(circle, #4df7ff,#007985);
-      top:65%;left:30%;
-      animation-duration:150s;
+      /* ✅ ALL TEXT BLACK by default */
+      color:#000;
     }
 
     /* ===== MENU ===== */
@@ -75,7 +39,10 @@
       position:sticky;
       top:0;
       z-index:999;
-      background:rgba(215, 196, 255, 0.92); 
+
+      /* ✅ pastel purple bar */
+      background:rgba(215, 196, 255, 0.92);
+
       border-bottom:3px solid rgba(0,0,0,0.75);
       backdrop-filter:blur(10px);
     }
@@ -91,7 +58,7 @@
       font-weight:800;
       font-size:28px;
       letter-spacing:0.3px;
-      color:#0b1020;
+      color:#000;
       text-decoration:none;
       line-height:1;
       white-space:nowrap;
@@ -119,7 +86,8 @@
       outline:none;
       font-size:16px;
       background:transparent;
-      color:#0b1020;
+      color:#000;
+      font-family:inherit;
     }
     .search button{
       border:0;
@@ -128,6 +96,7 @@
       font-size:18px;
       line-height:1;
       padding:4px 6px;
+      color:#000;
     }
     .nav-links{
       display:flex;
@@ -136,7 +105,7 @@
       white-space:nowrap;
     }
     .nav-links a{
-      color:#0b1020;
+      color:#000;
       text-decoration:none;
       font-weight:700;
       font-size:18px;
@@ -161,6 +130,7 @@
       justify-content:center;
       background:rgba(255,255,255,0.65);
       font-size:16px;
+      color:#000;
     }
 
     /* CONTENT WRAPPER */
@@ -177,37 +147,42 @@
       align-items:center;
       padding:22px;
       border-radius:var(--radius);
+
+      /* keep your original glass feel, but text stays black */
       background:rgba(255,255,255,0.06);
       backdrop-filter:blur(14px);
-      border:1px solid rgba(255,255,255,0.15);
-      box-shadow:0 8px 30px rgba(0,0,0,0.6);
+
+      border:1px solid rgba(0,0,0,0.10);
+      box-shadow:0 8px 30px rgba(0,0,0,0.18);
     }
 
     .profile-pic{
       width:160px;height:160px;
       border-radius:50%;
       object-fit:cover;
-      border:2px solid rgba(255,255,255,0.25);
+      border:2px solid rgba(0,0,0,0.15);
     }
 
-    .name{font-size:34px;margin:0 0 6px;color:#ffffff}
-    .title{color:var(--muted);margin:0 0 12px}
+    .name{font-size:34px;margin:0 0 6px;color:#000}
+    .title{color:#000;margin:0 0 12px}
 
     .pill{
       font-size:14px;
       padding:8px 14px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,0.15);
-      color:#a9d4ff;
+
+      border:2px solid rgba(0,0,0,0.75);
+      color:#000;
       text-decoration:none;
-      background:rgba(255,255,255,0.06);
-      transition:0.25s;
+      background:rgba(255,255,255,0.85);
+      transition:0.2s;
+      font-family:inherit;
     }
     .pill:hover{
-      color:white;
-      background:rgba(140,190,255,0.35);
-      box-shadow:0 0 12px rgba(140,190,255,0.6);
+      background:rgba(255,255,255,1);
+      box-shadow:0 8px 18px rgba(0,0,0,0.12);
       transform:translateY(-2px);
+      color:#000;
     }
 
     /* GRID */
@@ -219,220 +194,196 @@
     }
 
     .card{
-  background:#ffffff;
-  padding:22px;
-  border-radius:var(--radius);
-  border:1px solid #e5e7eb;
-  box-shadow:0 6px 24px rgba(0,0,0,0.12);
-  transition:0.3s;
-}
-
+      background:#ffffff;
+      padding:22px;
+      border-radius:var(--radius);
+      border:1px solid #e5e7eb;
+      box-shadow:0 6px 24px rgba(0,0,0,0.12);
+      transition:0.3s;
+      color:#000;
+    }
     .card:hover{
       transform:translateY(-3px);
-      box-shadow:0 12px 36px rgba(0,0,0,0.7);
+      box-shadow:0 12px 36px rgba(0,0,0,0.18);
     }
 
-    h2{margin:0 0 12px;color:#d8e5ff}
-    p{line-height:1.6;color:#d9e5ff}
+    /* ✅ all headings + paragraphs black */
+    h1,h2,h3,p,li,span,a,div{ font-family:inherit; }
+    h2{margin:0 0 12px;color:#000}
+    p{line-height:1.6;color:#000}
 
-    /* PROJECTS */
-    .projects{display:grid;gap:14px}
-    .proj{display:flex;gap:14px;align-items:flex-start}
-    .proj img{
-      width:120px;height:80px;
+    /* ===== Experience & Projects cards ===== */
+    .showcase-grid.two{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:22px;
+    }
+
+    .cardx{
+      border:3px solid #1a1a1a;
+      border-radius:26px;
+      padding:18px;
+      box-shadow:10px 10px 0 #1a1a1a;
+      background:#fff;
+      color:#000;
+    }
+
+    .cardx.mint{ background:#eaf7f0; }
+    .cardx.lavender{ background:#efe8ff; }
+
+    .cardx .thumb{
+      border:3px solid #1a1a1a;
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .cardx .thumb img{
+      width:100%;
+      height:200px;
       object-fit:cover;
-      border-radius:10px;
-      box-shadow:0 6px 16px rgba(0,0,0,0.6);
-      flex-shrink:0;
+      display:block;
     }
 
-    /* RESPONSIVE */
-    @media(min-width:860px){
-      main{grid-template-columns:1fr}
-      
+    .cardx .title{
+      margin:14px 0 8px;
+      font-size:26px;
+      font-weight:800;
+      color:#000;
     }
+    .cardx .meta{
+      font-size:16px;
+      margin-bottom:10px;
+      color:#000;
+    }
+    .cardx .desc{
+      font-size:16px;
+      line-height:1.55;
+      margin-bottom:14px;
+      color:#000;
+    }
+    .cardx .tags{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .cardx .tag{
+      padding:8px 14px;
+      border:2px solid #1a1a1a;
+      border-radius:999px;
+      font-size:14px;
+      background:rgba(255,255,255,0.7);
+      color:#000;
+    }
+
+    @media(max-width:900px){
+      .showcase-grid.two{ grid-template-columns:1fr; }
+    }
+
+    /* ===== Skills & Contact mini-cards ===== */
+    .section-head{
+      display:flex;
+      justify-content:center;
+    }
+
+    /* ✅ remove old Trebuchet/Comic; keep Inter */
+    .section-head h2{
+      display:inline-block;
+      padding:12px 22px;
+      border-radius:999px;
+      border:3px solid rgba(0,0,0,0.85);
+      background:rgba(255,255,255,0.92);
+      color:#000;
+      box-shadow:0 6px 0 rgba(0,0,0,0.25);
+      font-family:inherit;
+      letter-spacing:0.2px;
+    }
+
+    /* grid 3 columns */
+    .skill-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+    }
+
+    .mini-card{
+      background:rgba(255,255,255,0.95);
+      border:3px solid rgba(0,0,0,0.85);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:10px 10px 0 rgba(0,0,0,0.85);
+      color:#000;
+    }
+
+    .mini-card.orange{ border-color:#ff7a45; }
+    .mini-card.teal{ border-color:#3fbdb0; }
+    .mini-card.purple{ border-color:#b55cff; }
+
+    .mini-ico{
+      width:44px;height:44px;
+      border-radius:999px;
+      border:2px solid rgba(0,0,0,0.75);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      margin-bottom:10px;
+      color:#000;
+    }
+
+    .mini-title{
+      font-weight:900;
+      font-size:18px;
+      margin:4px 0 12px;
+      color:#000;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .chip{
+      display:inline-flex;
+      padding:8px 12px;
+      border-radius:999px;
+      border:2px solid rgba(0,0,0,0.75);
+      background:rgba(255,255,255,0.85);
+      font-size:14px;
+      color:#000;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:#000;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .linkx{
+      color:#000;
+      font-weight:800;
+      text-decoration:none;
+      border-bottom:2px solid rgba(0,0,0,0.2);
+    }
+    .linkx:hover{
+      border-bottom-color:rgba(0,0,0,0.7);
+    }
+
+    .contact-grid{
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+    }
+
+    @media(max-width:900px){
+      .skill-grid{ grid-template-columns:1fr; }
+      .mini-card{ box-shadow:8px 8px 0 rgba(0,0,0,0.85); }
+    }
+
     @media(max-width:860px){
       .navbar-inner{gap:12px}
       .nav-links a{font-size:16px}
       .brand{font-size:22px}
     }
-    /* ===== Experience & Projects cards ===== */
-.showcase-grid.two{
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:22px;
-}
-
-.cardx{
-  border:3px solid #1a1a1a;
-  border-radius:26px;
-  padding:18px;
-  box-shadow:10px 10px 0 #1a1a1a;
-  background:#fff;
-}
-
-.cardx.mint{ background:#eaf7f0; }
-.cardx.lavender{ background:#efe8ff; }
-
-.cardx .thumb{
-  border:3px solid #1a1a1a;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.cardx .thumb img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  display:block;
-}
-
-.cardx .title{
-  margin:14px 0 8px;
-  font-size:26px;
-  font-weight:800;
-  color:#0b1020;
-}
-
-.cardx .meta{
-  font-size:16px;
-  margin-bottom:10px;
-  color:#0b1020;
-}
-
-.cardx .desc{
-  font-size:16px;
-  line-height:1.55;
-  margin-bottom:14px;
-  color:#0b1020;
-}
-
-.cardx .tags{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.cardx .tag{
-  padding:8px 14px;
-  border:2px solid #1a1a1a;
-  border-radius:999px;
-  font-size:14px;
-  background:rgba(255,255,255,0.7);
-  color:#0b1020;
-}
-
-@media(max-width:900px){
-  .showcase-grid.two{ grid-template-columns:1fr; }
-}
-/* ===== Skills & Contact mini-cards like sample ===== */
-.section-head{
-  display:flex;
-  justify-content:center;
-}
-
-.section-head h2{
-  display:inline-block;
-  padding:12px 22px;
-  border-radius:999px;
-  border:3px solid rgba(0,0,0,0.85);
-  background:rgba(255,255,255,0.92);
-  color:#0b1020;
-  box-shadow:0 6px 0 rgba(0,0,0,0.25);
-  font-family:"Trebuchet MS","Comic Sans MS",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-  letter-spacing:0.2px;
-}
-
-/* grid 3 cột */
-.skill-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:22px;
-}
-
-/* mini card */
-.mini-card{
-  background:rgba(255,255,255,0.95);
-  border:3px solid rgba(0,0,0,0.85);
-  border-radius:18px;
-  padding:18px;
-  box-shadow:10px 10px 0 rgba(0,0,0,0.85);
-  color:#0b1020;
-}
-
-/* border màu như ảnh */
-.mini-card.orange{ border-color:#ff7a45; }
-.mini-card.teal{ border-color:#3fbdb0; }
-.mini-card.purple{ border-color:#b55cff; }
-
-.mini-ico{
-  width:44px;height:44px;
-  border-radius:999px;
-  border:2px solid rgba(0,0,0,0.75);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  margin-bottom:10px;
-}
-
-.mini-title{
-  font-weight:900;
-  font-size:18px;
-  margin:4px 0 12px;
-}
-
-/* chips giống ảnh */
-.chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.chip{
-  display:inline-flex;
-  padding:8px 12px;
-  border-radius:999px;
-  border:2px solid rgba(0,0,0,0.75);
-  background:rgba(255,255,255,0.85);
-  font-size:14px;
-}
-
-/* list certificate / link */
-.mini-list{
-  margin:0;
-  padding-left:18px;
-  color:#0b1020;
-  line-height:1.7;
-  font-size:15px;
-}
-
-.linkx{
-  color:#0b1020;
-  font-weight:800;
-  text-decoration:none;
-  border-bottom:2px solid rgba(0,0,0,0.2);
-}
-
-.linkx:hover{
-  border-bottom-color:rgba(0,0,0,0.7);
-}
-
-/* Contact vẫn 3 ô; nếu muốn 2 ô thì đổi cột */
-.contact-grid{
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-}
-
-/* responsive */
-@media(max-width:900px){
-  .skill-grid{
-    grid-template-columns:1fr;
-  }
-  .mini-card{
-    box-shadow:8px 8px 0 rgba(0,0,0,0.85);
-  }
-}
-
   </style>
 </head>
 
@@ -461,8 +412,6 @@
     </div>
   </nav>
 
- 
-
   <div class="wrap">
 
     <!-- HEADER -->
@@ -473,7 +422,7 @@
         <div class="title">Student · International Business Economics · FTU</div>
         <div class="links" style="display:flex;gap:12px;flex-wrap:wrap">
           <a class="pill" href="mailto:laphuongthao1561@gmail.com">Email</a>
-          <a class="pill" href="data/CV%20-%20NGUYEN%20DIEU%20NGOC%20-%20INTERN.pdf" target="_blank">CV</a>
+          <a class="pill" href="data/CV%20-%20NGUYEN%20DIEU%20NGOC%20-%20INTERN.pdf" target="_blank" rel="noopener">CV</a>
           <a class="pill" href="#projects">Projects</a>
           <a class="pill" href="#contact">Contact</a>
         </div>
@@ -481,177 +430,178 @@
     </header>
 
     <!-- MAIN -->
-<main>
-  <section>
+    <main>
+      <section>
 
-    <div class="card" id="about">
-      <div style="text-align:center">
-  <h2 class="section-pill">About Me</h2>
-</div>
-      <p>
-        I am an International Economics student at Foreign Trade University (FTU) with a strong interest in addressing real-world challenges related to economic, environmental, and social impact.
-        My studies focus on international trade, logistics, digital transformation, and data-driven economic analysis.
-      </p>
-    </div>
+        <!-- ABOUT -->
+        <div class="card" id="about">
+          <div class="section-head">
+            <h2 style="margin:0">About Me</h2>
+          </div>
+          <p style="margin-top:14px">
+            I am an International Economics student at Foreign Trade University (FTU) with a strong interest in addressing real-world challenges related to economic, environmental, and social impact.
+            My studies focus on international trade, logistics, digital transformation, and data-driven economic analysis.
+          </p>
+        </div>
 
-   <div id="experience" class="card" style="margin-top:16px">
-  <div style="text-align:center">
-  <h2 class="section-pill">Experience & Projects</h2>
-</div>
+        <!-- EXPERIENCE & PROJECTS -->
+        <div id="experience" class="card" style="margin-top:16px">
+          <div class="section-head">
+            <h2 style="margin:0">Experience & Projects</h2>
+          </div>
 
-  <div class="showcase-grid two" style="margin-top:14px">
+          <div class="showcase-grid two" style="margin-top:14px">
 
-    <!-- Card 1 -->
-    <article class="cardx mint">
-      <div class="thumb">
-        <img src="images/yrc-ftu.jpg" alt="Young Researchers Club FTU">
-      </div>
+            <!-- Card 1 -->
+            <article class="cardx mint">
+              <div class="thumb">
+                <img src="images/yrc-ftu.jpg" alt="Young Researchers Club FTU">
+              </div>
 
-      <h3 class="title">Young Researchers Club (YRC FTU)</h3>
+              <h3 class="title">Young Researchers Club (YRC FTU)</h3>
 
-      <p class="meta">
-        Member | <span class="time">2024 – Present</span>
-      </p>
+              <p class="meta">
+                Member | <span class="time">2024 – Present</span>
+              </p>
 
-      <p class="desc">
-        Participated in academic research activities, data collection,
-        and basic data analysis for student research projects.
-      </p>
+              <p class="desc">
+                Participated in academic research activities, data collection,
+                and basic data analysis for student research projects.
+              </p>
 
-      <div class="tags">
-        <span class="tag">Research</span>
-        <span class="tag">Data Analysis</span>
-      </div>
-    </article>
+              <div class="tags">
+                <span class="tag">Research</span>
+                <span class="tag">Data Analysis</span>
+              </div>
+            </article>
 
-    <!-- Card 2 -->
-    <article class="cardx lavender">
-      <div class="thumb">
-        <img src="images/letters-from-the-sun.jpg" alt="Letters from the Sun Volunteer Event">
-      </div>
+            <!-- Card 2 -->
+            <article class="cardx lavender">
+              <div class="thumb">
+                <img src="images/letters-from-the-sun.jpg" alt="Letters from the Sun Volunteer Event">
+              </div>
 
-      <h3 class="title">Letters from the Sun</h3>
+              <h3 class="title">Letters from the Sun</h3>
 
-      <p class="meta">
-        Volunteer – FTU Youth Union
-      </p>
+              <p class="meta">
+                Volunteer – FTU Youth Union
+              </p>
 
-      <p class="desc">
-        Volunteer program organized by the FTU Youth Union,
-        supporting logistics, coordination, and participant guidance.
-      </p>
+              <p class="desc">
+                Volunteer program organized by the FTU Youth Union,
+                supporting logistics, coordination, and participant guidance.
+              </p>
 
-      <div class="tags">
-        <span class="tag">Volunteering</span>
-        <span class="tag">Community</span>
-      </div>
-    </article>
+              <div class="tags">
+                <span class="tag">Volunteering</span>
+                <span class="tag">Community</span>
+              </div>
+            </article>
 
-  </div>
-</div>
+          </div>
+        </div>
 
-    <!-- Projects anchor (so menu works even if you don't have a section yet) -->
-    <div id="projects" style="height:1px;"></div>
+        <!-- Projects anchor (menu target) -->
+        <div id="projects" style="height:1px;"></div>
 
-    <!-- SKILLS & CERTS -->
-<div id="skills" class="card" style="margin-top:16px">
-  <div class="section-head">
-    <h2 style="margin:0">Skills & Certs</h2>
-  </div>
+        <!-- SKILLS & CERTS -->
+        <div id="skills" class="card" style="margin-top:16px">
+          <div class="section-head">
+            <h2 style="margin:0">Skills & Certs</h2>
+          </div>
 
-  <div class="skill-grid" style="margin-top:14px">
+          <div class="skill-grid" style="margin-top:14px">
 
-    <!-- Tech Stack -->
-    <article class="mini-card orange">
-      <div class="mini-ico">⌘</div>
-      <div class="mini-title">Tech Stack</div>
-      <div class="chips">
-        <span class="chip">Python (Basic)</span>
-        <span class="chip">React (Basic)</span>
-        <span class="chip">Git / GitHub</span>
-      </div>
-    </article>
+            <!-- Tech Stack -->
+            <article class="mini-card orange">
+              <div class="mini-ico">⌘</div>
+              <div class="mini-title">Tech Stack</div>
+              <div class="chips">
+                <span class="chip">Python (Basic)</span>
+                <span class="chip">React (Basic)</span>
+                <span class="chip">Git / GitHub</span>
+              </div>
+            </article>
 
-    <!-- Tools -->
-    <article class="mini-card teal">
-      <div class="mini-ico">🛠</div>
-      <div class="mini-title">Tools</div>
-      <div class="chips">
-        <span class="chip">Canva & CapCut</span>
-        <span class="chip">Google Workspace</span>
-        <span class="chip">Excel (Advanced)</span>
-      </div>
-    </article>
+            <!-- Tools -->
+            <article class="mini-card teal">
+              <div class="mini-ico">🛠</div>
+              <div class="mini-title">Tools</div>
+              <div class="chips">
+                <span class="chip">Canva & CapCut</span>
+                <span class="chip">Google Workspace</span>
+                <span class="chip">Excel (Advanced)</span>
+              </div>
+            </article>
 
-    <!-- Certificates -->
-    <article class="mini-card purple">
-      <div class="mini-ico">✳</div>
-      <div class="mini-title">Certificates</div>
-      <ul class="mini-list">
-        <li>Sub-Leader Certificate (Defense Edu)</li>
-        <li>MOS Expert (Excel & Word)</li>
-        <li>Photography & Design Basics</li>
-      </ul>
-    </article>
+            <!-- Certificates -->
+            <article class="mini-card purple">
+              <div class="mini-ico">✳</div>
+              <div class="mini-title">Certificates</div>
+              <ul class="mini-list">
+                <li>Sub-Leader Certificate (Defense Edu)</li>
+                <li>MOS Expert (Excel & Word)</li>
+                <li>Photography & Design Basics</li>
+              </ul>
+            </article>
 
-  </div>
-</div>
+          </div>
+        </div>
 
-<!-- CONTACT  -->
-<div id="contact" class="card" style="margin-top:16px">
-  <div class="section-head">
-    <h2 style="margin:0">Contact</h2>
-  </div>
+        <!-- CONTACT -->
+        <div id="contact" class="card" style="margin-top:16px">
+          <div class="section-head">
+            <h2 style="margin:0">Contact</h2>
+          </div>
 
-  <div class="skill-grid contact-grid" style="margin-top:14px">
+          <div class="skill-grid contact-grid" style="margin-top:14px">
 
-    <!-- Email -->
-    <article class="mini-card orange">
-      <div class="mini-ico">✉</div>
-      <div class="mini-title">Email</div>
-      <ul class="mini-list">
-        <li>
-          <a class="linkx" href="mailto:laphuongthao1561@gmail.com">
-            laphuongthao1561@gmail.com
-          </a>
-        </li>
-      </ul>
-    </article>
+            <!-- Email -->
+            <article class="mini-card orange">
+              <div class="mini-ico">✉</div>
+              <div class="mini-title">Email</div>
+              <ul class="mini-list">
+                <li>
+                  <a class="linkx" href="mailto:laphuongthao1561@gmail.com">
+                    laphuongthao1561@gmail.com
+                  </a>
+                </li>
+              </ul>
+            </article>
 
-    <!-- LinkedIn -->
-    <article class="mini-card teal">
-      <div class="mini-ico">in</div>
-      <div class="mini-title">LinkedIn</div>
-      <ul class="mini-list">
-        <li>
-          <a class="linkx" href="https://www.linkedin.com/in/l%C3%A3-ph%C6%B0%C6%A1ng-th%E1%BA%A3o-166783228/" target="_blank" rel="noopener">
-            View profile
-          </a>
-        </li>
-      </ul>
-    </article>
+            <!-- LinkedIn -->
+            <article class="mini-card teal">
+              <div class="mini-ico">in</div>
+              <div class="mini-title">LinkedIn</div>
+              <ul class="mini-list">
+                <li>
+                  <a class="linkx" href="https://www.linkedin.com/in/l%C3%A3-ph%C6%B0%C6%A1ng-th%E1%BA%A3o-166783228/" target="_blank" rel="noopener">
+                    View profile
+                  </a>
+                </li>
+              </ul>
+            </article>
 
-    <!-- Facebook -->
-    <article class="mini-card purple">
-      <div class="mini-ico">f</div>
-      <div class="mini-title">Facebook</div>
-      <ul class="mini-list">
-        <li>
-          <a class="linkx" href="https://www.facebook.com/lathaoor/" target="_blank" rel="noopener">
-            View profile
-          </a>
-        </li>
-      </ul>
-    </article>
+            <!-- Facebook -->
+            <article class="mini-card purple">
+              <div class="mini-ico">f</div>
+              <div class="mini-title">Facebook</div>
+              <ul class="mini-list">
+                <li>
+                  <a class="linkx" href="https://www.facebook.com/lathaoor/" target="_blank" rel="noopener">
+                    View profile
+                  </a>
+                </li>
+              </ul>
+            </article>
 
-  </div>
-</div>
+          </div>
+        </div>
 
+      </section>
+    </main>
 
-  </section>
-</main>
-
-
+    <!-- ✅ only footer text keeps non-black color -->
     <footer style="margin-top:36px;padding:18px;text-align:center;color:#b7c6e3;font-size:14px">
       Built with a custom galaxy template ✦
     </footer>
@@ -664,7 +614,6 @@
       const q = (document.getElementById('siteSearch').value || '').trim().toLowerCase();
       if(!q) return false;
 
-      // search inside main content only
       const scope = document.querySelector('.wrap');
       const els = scope.querySelectorAll('h2, h1, p, li, .title, .authors');
       for (const el of els){
@@ -675,7 +624,6 @@
         }
       }
 
-      // fallback: go to About
       const about = document.getElementById('about');
       if(about) about.scrollIntoView({behavior:'smooth', block:'start'});
       return false;
