@@ -9,42 +9,23 @@
   <style>
     :root{
       --accent:#6db8ff;
-      --muted:#b7c6e3;
-      --bg:#05081A;
-      --card:rgba(255,255,255,0.07);
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card:#ffffff;
       --radius:14px;
       --maxw:1000px;
       font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
     }
 
     html,body{
-      height:100%;
-      margin:0;
-      color:#e8eeff;
-      background:var(--bg);
-      overflow-x:hidden;
-    }
+  height:100%;
+  margin:0;
+  color:#0b1020;
+  background:var(--bg);
+  overflow-x:hidden;
+}
 
-    /* ⭐ BACKGROUND LAYER */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:radial-gradient(circle at 20% 10%, #16245c, #05081A 70%);
-      z-index:-3;
-    }
-
-    /* ⭐ STARFIELD LAYER */
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:url("https://raw.githubusercontent.com/rajatkantinandi/starfield/main/stars.png");
-      opacity:0.45;
-      animation:floatStars 120s linear infinite;
-      z-index:-2;
-    }
-
+   
     @keyframes floatStars {
       from {transform:translateY(0)}
       to {transform:translateY(-2000px)}
@@ -235,14 +216,14 @@
     }
 
     .card{
-      background:var(--card);
-      padding:22px;
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,0.12);
-      box-shadow:0 6px 24px rgba(0,0,0,0.5);
-      backdrop-filter:blur(12px);
-      transition:0.3s;
-    }
+  background:#ffffff;
+  padding:22px;
+  border-radius:var(--radius);
+  border:1px solid #e5e7eb;
+  box-shadow:0 6px 24px rgba(0,0,0,0.12);
+  transition:0.3s;
+}
+
     .card:hover{
       transform:translateY(-3px);
       box-shadow:0 12px 36px rgba(0,0,0,0.7);
@@ -477,10 +458,7 @@
     </div>
   </nav>
 
-  <!-- PLANETS -->
-  <div id="planet1" class="planet"></div>
-  <div id="planet2" class="planet"></div>
-  <div id="planet3" class="planet"></div>
+ 
 
   <div class="wrap">
 
