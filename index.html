@@ -32,16 +32,16 @@
     }
 
     body{
-      margin:0;
-      color:var(--text);
-      font-family:inherit;
-      overflow-x:hidden;
-      background-color:var(--bg);
-      background-image:url("images/bg-pattern.png");
-      background-repeat:repeat;
-      background-size:110px auto;
-      background-position:top left;
-    }
+  margin:0;
+  color:var(--text);
+  font-family:inherit;
+  overflow-x:hidden;
+  background-color:var(--bg);
+  background-image:url("images/bg-pattern.png");
+  background-repeat:repeat;
+  background-size:110px auto;
+  background-position:0 0;
+}
 
     a, button, input, h1, h2, h3, p, li, div, span{
       font-family:inherit;
@@ -209,19 +209,27 @@
     }
 
     .profile-pic{
-      width:150px;
-      height:150px;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid rgba(0,0,0,0.15);
-      flex-shrink:0;
-      transition:transform 0.22s ease, filter 0.22s ease;
-    }
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid rgba(255,255,255,0.75);
+  flex-shrink:0;
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,0.35),
+    0 0 24px rgba(255, 214, 236, 0.55),
+    0 10px 24px rgba(0,0,0,0.12);
+  transition:transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
+}
 
     .profile-pic:hover{
-      transform:scale(1.03) rotate(-1deg);
-      filter:brightness(1.03);
-    }
+  transform:scale(1.04) rotate(-1deg);
+  filter:brightness(1.05);
+  box-shadow:
+    0 0 0 6px rgba(255,255,255,0.42), 
+    0 0 36px rgba(255, 194, 227, 0.72),
+    0 14px 28px rgba(0,0,0,0.14);
+}
 
     .name{
       font-size:32px;
@@ -1125,7 +1133,10 @@ buttonsRipple.forEach(button => {
 
   });
 });
-
+window.addEventListener("scroll", () => {
+  const y = window.scrollY * 0.25;
+  document.body.style.backgroundPosition = `0 ${y}px`;
+});
   </script>
 </body>
 </html>
