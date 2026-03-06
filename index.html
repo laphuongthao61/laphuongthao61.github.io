@@ -12,10 +12,10 @@
 
   <style>
     :root{
-      --bg:#f6dfe9;
+      --bg:#f7e8ee;
       --text:#000;
       --muted:#4b5563;
-      --card:rgba(255,255,255,0.94);
+      --card:rgba(255,255,255,0.88);
       --border:#1f1f1f;
       --navbar:#d9c6ff;
       --radius:16px;
@@ -37,10 +37,10 @@
   font-family:inherit;
   overflow-x:hidden;
   background-color:var(--bg);
-  background-image:url("images/bg-pattern.png");
+  background-image:url("images/bg-imagine.jpg");
   background-repeat:repeat;
-  background-size:110px auto;
-  background-position:0 0;
+  background-size:180px auto;
+  background-position:top left;
 }
 
     a, button, input, h1, h2, h3, p, li, div, span{
@@ -414,14 +414,18 @@
       transform:scale(0.96);
     }
 
-    .hobby-btn:hover{
-      background:#ffe4f1;
-    }
-
+    .hobby-btn:hover,
+.hobby-btn.active{
+  background:#ffb3d1;
+  border-color:#ff3f8e;
+  box-shadow:0 0 10px rgba(255,63,142,0.35);
+}
     .music-btn:hover{
-      background:#e6dcff;
-    }
-
+  background:#b99cff;
+  border-color:#7c3aed;
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 6px 14px rgba(124,58,237,0.35);
+}
     .about-gallery{
       display:none;
       margin-top:16px;
