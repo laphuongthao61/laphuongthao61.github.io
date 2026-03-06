@@ -357,6 +357,20 @@
       font-weight:700;
       cursor:pointer;
     }
+    .about-toggle.active{
+  background:#ffddee;
+  border-color:#ff6fa9;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  transform:translateY(-2px) scale(1.05);
+}
+
+.hobby-btn.active{
+  background:#ffe4f1;
+}
+
+.music-btn.active{
+  background:#e6dcff;
+}
 
     .about-toggle:hover{
       transform:translateY(-3px) rotate(-1deg) scale(1.06);
@@ -870,12 +884,12 @@
           </p>
 
           <div class="about-actions">
-            <button class="about-toggle hobby-btn" type="button" onclick="toggleAboutGallery('hobbyGallery')">
-              Hobby
-            </button>
-            <button class="about-toggle music-btn" type="button" onclick="toggleAboutGallery('musicGallery')">
-              Music
-            </button>
+            <button id="hobbyBtn" class="about-toggle hobby-btn" onclick="toggleAboutGallery('hobbyGallery',this)">
+  Hobby
+</button>
+            <button id="musicBtn" class="about-toggle music-btn" onclick="toggleAboutGallery('musicGallery',this)">
+  Music
+</button>
           </div>
 
           <div id="hobbyGallery" class="about-gallery">
@@ -1023,20 +1037,34 @@
   </div>
 
   <script>
-    function toggleAboutGallery(id){
-      const galleries = document.querySelectorAll('.about-gallery');
+    function toggleAboutGallery(id,btn){
 
-      galleries.forEach(gallery => {
-        if(gallery.id !== id){
-          gallery.classList.remove('show');
-        }
-      });
+  const galleries = document.querySelectorAll('.about-gallery');
+  const buttons = document.querySelectorAll('.about-toggle');
 
-      const selected = document.getElementById(id);
-      if(selected){
-        selected.classList.toggle('show');
-      }
+  galleries.forEach(g=>{
+    if(g.id !== id){
+      g.classList.remove('show');
     }
+  });
+
+  buttons.forEach(b=>{
+    if(b !== btn){
+      b.classList.remove('active');
+    }
+  });
+
+  const selected = document.getElementById(id);
+
+  if(selected.classList.contains("show")){
+    selected.classList.remove("show");
+    btn.classList.remove("active");
+  }else{
+    selected.classList.add("show");
+    btn.classList.add("active");
+  }
+
+}
 
     function doSearch(e){
       e.preventDefault();
