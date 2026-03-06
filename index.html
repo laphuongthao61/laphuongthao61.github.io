@@ -6,312 +6,424 @@
   <title>La Phuong Thao — Portfolio</title>
   <meta name="description" content="Personal academic / portfolio website" />
 
-  <!-- Inter font (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --accent:#6db8ff;
-      --muted:#6b7280;
-      --bg:#ffffff;
-      --card:#ffffff;
-      --radius:14px;
-      --maxw:1000px;
-
-      /* ✅ ONE FONT for whole site */
+      --bg:#fff4f8;
+      --text:#000;
+      --muted:#4b5563;
+      --card:rgba(255,255,255,0.90);
+      --white:#fff;
+      --border:#1f1f1f;
+      --shadow:rgba(0,0,0,0.18);
+      --navbar:#d9c6ff;
+      --radius:16px;
+      --maxw:1200px;
       font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      background:var(--bg);
-      overflow-x:hidden;
-
-      /* ✅ ALL TEXT BLACK by default */
-      color:#000;
+    *{
+      box-sizing:border-box;
     }
 
-    /* ===== MENU ===== */
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:inherit;
+      overflow-x:hidden;
+      background-color:var(--bg);
+      background-image:url("images/bg-imagine.png");
+      background-repeat:repeat;
+      background-size:220px auto;
+    }
+
+    a, button, input, h1, h2, h3, p, li, div, span{
+      font-family:inherit;
+    }
+
     .navbar{
       position:sticky;
       top:0;
       z-index:999;
-
-      /* ✅ pastel purple bar */
-      background:rgba(215, 196, 255, 0.92);
-
-      border-bottom:3px solid rgba(0,0,0,0.75);
+      background:rgba(217, 198, 255, 0.94);
+      border-bottom:3px solid rgba(0,0,0,0.78);
       backdrop-filter:blur(10px);
     }
+
     .navbar-inner{
-      max-width:1200px;
+      max-width:1400px;
       margin:0 auto;
-      padding:14px 18px;
+      padding:10px 18px;
       display:flex;
       align-items:center;
       gap:18px;
     }
+
     .brand{
       font-weight:800;
-      font-size:28px;
-      letter-spacing:0.3px;
+      font-size:24px;
+      letter-spacing:0.2px;
       color:#000;
       text-decoration:none;
       line-height:1;
       white-space:nowrap;
-      font-family:inherit;
+      transition:transform 0.18s ease;
     }
+
+    .brand:hover{
+      transform:scale(1.02);
+    }
+
     .search-wrap{
       flex:1;
       display:flex;
       justify-content:center;
     }
+
     .search{
-      width:min(520px, 100%);
+      width:min(430px, 100%);
       display:flex;
       align-items:center;
-      gap:10px;
-      padding:10px 14px;
+      gap:8px;
+      padding:8px 12px;
       border-radius:999px;
       background:#fff;
-      border:3px solid rgba(0,0,0,0.8);
-      box-shadow:0 8px 18px rgba(0,0,0,0.18);
+      border:3px solid rgba(0,0,0,0.82);
+      box-shadow:0 6px 14px rgba(0,0,0,0.14);
+      transition:transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
     }
+
+    .search:hover,
+    .search:focus-within{
+      transform:translateY(-1px) scale(1.01);
+      box-shadow:0 10px 20px rgba(0,0,0,0.14);
+      filter:brightness(1.02);
+    }
+
     .search input{
       width:100%;
       border:0;
       outline:none;
-      font-size:16px;
+      font-size:14px;
       background:transparent;
       color:#000;
-      font-family:inherit;
     }
+
     .search button{
       border:0;
       background:transparent;
       cursor:pointer;
       font-size:18px;
       line-height:1;
-      padding:4px 6px;
+      padding:2px 4px;
       color:#000;
+      transition:transform 0.16s ease;
     }
+
+    .search button:hover{
+      transform:scale(1.08);
+    }
+
     .nav-links{
       display:flex;
       align-items:center;
-      gap:18px;
+      gap:10px;
       white-space:nowrap;
     }
+
     .nav-links a{
       color:#000;
       text-decoration:none;
       font-weight:700;
-      font-size:18px;
-      padding:8px 10px;
-      border-radius:10px;
-      transition:0.2s;
+      font-size:16px;
+      padding:8px 12px;
+      border-radius:12px;
+      transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, filter 0.18s ease;
     }
+
     .nav-links a:hover{
       background:rgba(255,255,255,0.55);
+      transform:translateY(-1px) scale(1.04);
+      box-shadow:0 6px 14px rgba(0,0,0,0.10);
+      filter:brightness(1.03);
     }
+
+    .nav-links a:active{
+      transform:translateY(1px) scale(0.98);
+    }
+
     .gh-icon{
       display:inline-flex;
       align-items:center;
-      gap:8px;
+      justify-content:center;
     }
+
     .gh-dot{
-      width:28px;height:28px;
+      width:26px;
+      height:26px;
       border:2px solid rgba(0,0,0,0.75);
       border-radius:50%;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      background:rgba(255,255,255,0.65);
-      font-size:16px;
+      background:rgba(255,255,255,0.72);
+      font-size:15px;
       color:#000;
+      transition:transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    /* CONTENT WRAPPER */
+    .gh-dot:hover{
+      transform:scale(1.08);
+      box-shadow:0 6px 12px rgba(0,0,0,0.12);
+    }
+
     .wrap{
       max-width:var(--maxw);
-      margin:36px auto;
-      padding:28px;
+      margin:18px auto 30px;
+      padding:16px;
     }
 
-    /* HEADER */
     .top{
       display:flex;
-      gap:28px;
+      gap:24px;
       align-items:center;
-      padding:22px;
-      border-radius:var(--radius);
-
-      /* keep your original glass feel, but text stays black */
-      background:rgba(255,255,255,0.06);
-      backdrop-filter:blur(14px);
-
+      padding:20px;
+      border-radius:24px;
+      background:var(--card);
+      backdrop-filter:blur(6px);
       border:1px solid rgba(0,0,0,0.10);
-      box-shadow:0 8px 30px rgba(0,0,0,0.18);
+      box-shadow:0 8px 26px rgba(0,0,0,0.10);
     }
 
     .profile-pic{
-      width:160px;height:160px;
+      width:150px;
+      height:150px;
       border-radius:50%;
       object-fit:cover;
-      border:2px solid rgba(0,0,0,0.15);
+      border:3px solid rgba(0,0,0,0.15);
+      flex-shrink:0;
     }
 
-    .name{font-size:34px;margin:0 0 6px;color:#000}
-    .title{color:#000;margin:0 0 12px}
-
-    .pill{
-      font-size:14px;
-      padding:8px 14px;
-      border-radius:999px;
-
-      border:2px solid rgba(0,0,0,0.75);
+    .name{
+      font-size:32px;
+      margin:0 0 6px;
       color:#000;
-      text-decoration:none;
-      background:rgba(255,255,255,0.85);
-      transition:0.2s;
-      font-family:inherit;
+      line-height:1.1;
     }
-    .pill:hover{
-      background:rgba(255,255,255,1);
-      box-shadow:0 8px 18px rgba(0,0,0,0.12);
-      transform:translateY(-2px);
+
+    .title{
       color:#000;
-    }
-
-    /* GRID */
-    main{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:24px;
-      margin-top:28px;
-    }
-
-    .card{
-      background:#ffffff;
-      padding:22px;
-      border-radius:var(--radius);
-      border:1px solid #e5e7eb;
-      box-shadow:0 6px 24px rgba(0,0,0,0.12);
-      transition:0.3s;
-      color:#000;
-    }
-    .card:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 36px rgba(0,0,0,0.18);
-    }
-
-    /* ✅ all headings + paragraphs black */
-    h1,h2,h3,p,li,span,a,div{ font-family:inherit; }
-    h2{margin:0 0 12px;color:#000}
-    p{line-height:1.6;color:#000}
-
-    /* ===== Experience & Projects cards ===== */
-    .showcase-grid.two{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:22px;
-    }
-
-    .cardx{
-      border:3px solid #1a1a1a;
-      border-radius:22px;
-      padding:14px;
-      box-shadow:8px 8px 0 #1a1a1a;
-      background:#fff;
-      color:#000;
-    }
-
-    .cardx.mint{ background:#eaf7f0; }
-    .cardx.lavender{ background:#efe8ff; }
-
-    .cardx .thumb{
-      border:3px solid #1a1a1a;
-      border-radius:18px;
-      overflow:hidden;
-    }
-    .cardx .thumb img{
-      width:100%;
-      height:150px;
-      object-fit:cover;
-      display:block;
-    }
-    
-
-    .cardx .title{
-      margin:14px 0 8px;
-      font-size:26px;
-      font-weight:800;
-      color:#000;
-    }
-    .cardx .meta{
+      margin:0 0 12px;
       font-size:16px;
-      margin-bottom:10px;
-      color:#000;
     }
-    .cardx .desc{
-      font-size:16px;
-      line-height:1.55;
-      margin-bottom:14px;
-      color:#000;
-    }
-    .cardx .tags{
+
+    .links{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
     }
-    .cardx .tag{
-      padding:8px 14px;
-      border:2px solid #1a1a1a;
+
+    .pill,
+    .cardx .tag,
+    .linkx,
+    .section-head h2{
+      transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, filter 0.18s ease, color 0.18s ease;
+    }
+
+    .pill{
+      font-size:13px;
+      padding:6px 12px;
       border-radius:999px;
-      font-size:14px;
-      background:rgba(255,255,255,0.7);
+      border:2px solid rgba(0,0,0,0.75);
+      color:#000;
+      text-decoration:none;
+      background:rgba(255,255,255,0.92);
+      font-weight:600;
+    }
+
+    .pill:hover{
+      transform:translateY(-2px) scale(1.04);
+      box-shadow:0 8px 16px rgba(0,0,0,0.12);
+      filter:brightness(1.04);
       color:#000;
     }
 
-    @media(max-width:900px){
-      .showcase-grid.two{ grid-template-columns:1fr; }
+    .pill:active{
+      transform:translateY(1px) scale(0.98);
     }
 
-    /* ===== Skills & Contact mini-cards ===== */
+    main{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .card{
+      background:var(--card);
+      backdrop-filter:blur(4px);
+      padding:18px;
+      border-radius:20px;
+      border:1px solid #e5e7eb;
+      box-shadow:0 6px 20px rgba(0,0,0,0.10);
+      transition:transform 0.22s ease, box-shadow 0.22s ease;
+      color:#000;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    h2{
+      margin:0;
+      color:#000;
+    }
+
+    p{
+      line-height:1.6;
+      color:#000;
+      margin:0;
+    }
+
     .section-head{
       display:flex;
       justify-content:center;
     }
 
-    /* ✅ remove old Trebuchet/Comic; keep Inter */
     .section-head h2{
       display:inline-block;
-      padding:12px 22px;
+      padding:8px 18px;
       border-radius:999px;
       border:3px solid rgba(0,0,0,0.85);
-      background:rgba(255,255,255,0.92);
+      background:rgba(255,255,255,0.95);
       color:#000;
-      box-shadow:0 6px 0 rgba(0,0,0,0.25);
-      font-family:inherit;
-      letter-spacing:0.2px;
+      box-shadow:0 5px 0 rgba(0,0,0,0.20);
+      letter-spacing:0.1px;
+      font-size:18px;
+      font-weight:800;
     }
 
-    /* grid 3 columns */
+    .section-head h2:hover{
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:0 8px 16px rgba(0,0,0,0.14);
+      filter:brightness(1.03);
+    }
+
+    .section-head h2:active{
+      transform:translateY(1px) scale(0.98);
+    }
+
+    .showcase-grid.two{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:14px;
+    }
+
+    .cardx{
+      border:3px solid var(--border);
+      border-radius:22px;
+      padding:14px;
+      box-shadow:8px 8px 0 var(--border);
+      color:#000;
+    }
+
+    .cardx.mint{
+      background:#eef8f2;
+    }
+
+    .cardx.lavender{
+      background:#f2ecff;
+    }
+
+    .cardx .thumb{
+      border:3px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .cardx .thumb img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .cardx .title{
+      margin:14px 0 8px;
+      font-size:22px;
+      font-weight:800;
+      color:#000;
+      line-height:1.2;
+    }
+
+    .cardx .meta{
+      font-size:15px;
+      margin-bottom:10px;
+      color:#000;
+    }
+
+    .cardx .desc{
+      font-size:15px;
+      line-height:1.6;
+      margin-bottom:14px;
+      color:#000;
+    }
+
+    .cardx .tags{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .cardx .tag{
+      padding:8px 14px;
+      border:2px solid var(--border);
+      border-radius:999px;
+      font-size:14px;
+      background:rgba(255,255,255,0.82);
+      color:#000;
+      cursor:default;
+    }
+
+    .cardx .tag:hover{
+      transform:translateY(-2px) scale(1.04);
+      box-shadow:0 6px 12px rgba(0,0,0,0.10);
+      filter:brightness(1.03);
+    }
+
+    .cardx .tag:active{
+      transform:translateY(1px) scale(0.98);
+    }
+
     .skill-grid{
       display:grid;
       grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:22px;
+      gap:18px;
+      margin-top:14px;
     }
 
     .mini-card{
       background:rgba(255,255,255,0.95);
       border:3px solid rgba(0,0,0,0.85);
       border-radius:18px;
-      padding:18px;
-      box-shadow:10px 10px 0 rgba(0,0,0,0.85);
+      padding:16px;
+      box-shadow:9px 9px 0 rgba(0,0,0,0.85);
       color:#000;
+      transition:transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .mini-card:hover{
+      transform:translateY(-2px);
+      box-shadow:12px 12px 0 rgba(0,0,0,0.82);
     }
 
     .mini-card.orange{ border-color:#ff7a45; }
@@ -319,7 +431,8 @@
     .mini-card.purple{ border-color:#b55cff; }
 
     .mini-ico{
-      width:44px;height:44px;
+      width:42px;
+      height:42px;
       border-radius:999px;
       border:2px solid rgba(0,0,0,0.75);
       display:flex;
@@ -328,13 +441,15 @@
       font-weight:900;
       margin-bottom:10px;
       color:#000;
+      background:#fff;
     }
 
     .mini-title{
       font-weight:900;
       font-size:18px;
-      margin:4px 0 12px;
+      margin:4px 0 10px;
       color:#000;
+      line-height:1.3;
     }
 
     .chips{
@@ -348,9 +463,15 @@
       padding:8px 12px;
       border-radius:999px;
       border:2px solid rgba(0,0,0,0.75);
-      background:rgba(255,255,255,0.85);
+      background:rgba(255,255,255,0.88);
       font-size:14px;
       color:#000;
+      transition:transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .chip:hover{
+      transform:translateY(-2px) scale(1.04);
+      box-shadow:0 6px 12px rgba(0,0,0,0.10);
     }
 
     .mini-list{
@@ -365,44 +486,102 @@
       color:#000;
       font-weight:800;
       text-decoration:none;
-      border-bottom:2px solid rgba(0,0,0,0.2);
+      border-bottom:2px solid rgba(0,0,0,0.18);
     }
+
     .linkx:hover{
-      border-bottom-color:rgba(0,0,0,0.7);
+      border-bottom-color:rgba(0,0,0,0.72);
+      transform:scale(1.03);
+      filter:brightness(1.02);
+    }
+
+    .linkx:active{
+      transform:scale(0.99);
+    }
+
+    .wide{
+      max-width:100%;
+      margin-left:auto;
+      margin-right:auto;
     }
 
     .contact-grid{
       grid-template-columns:repeat(3, minmax(0, 1fr));
     }
 
-    @media(max-width:900px){
-      .skill-grid{ grid-template-columns:1fr; }
-      .mini-card{ box-shadow:8px 8px 0 rgba(0,0,0,0.85); }
+    footer{
+      margin-top:28px;
+      padding:16px;
+      text-align:center;
+      color:#c49ac9;
+      font-size:14px;
     }
 
-    @media(max-width:860px){
-      .navbar-inner{gap:12px}
-      .nav-links a{font-size:16px}
-      .brand{font-size:22px}
+    @media (max-width: 980px){
+      .navbar-inner{
+        gap:12px;
+      }
+
+      .brand{
+        font-size:22px;
+      }
+
+      .nav-links a{
+        font-size:15px;
+        padding:7px 10px;
+      }
+
+      .showcase-grid.two{
+        grid-template-columns:1fr;
+      }
+
+      .skill-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
     }
-    
-.card.wide{
-  max-width:1200px;
-  margin-left:auto;
-  margin-right:auto;
-}
-  
-.skill-grid.contact-grid{
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-}
 
+    @media (max-width: 760px){
+      .navbar-inner{
+        flex-wrap:wrap;
+        justify-content:space-between;
+      }
 
+      .search-wrap{
+        order:3;
+        width:100%;
+      }
+
+      .search{
+        width:100%;
+      }
+
+      .top{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .links{
+        justify-content:center;
+      }
+
+      .profile-pic{
+        width:130px;
+        height:130px;
+      }
+
+      .name{
+        font-size:28px;
+      }
+
+      .wrap{
+        padding:12px;
+      }
+    }
   </style>
 </head>
 
 <body>
-
-  <!-- MENU -->
   <nav class="navbar">
     <div class="navbar-inner">
       <a class="brand" href="#">La Phuong Thao</a>
@@ -426,14 +605,12 @@
   </nav>
 
   <div class="wrap">
-
-    <!-- HEADER -->
     <header class="top">
       <img class="profile-pic" src="images/avatar.jpg" alt="La Phuong Thao">
       <div class="hdr">
         <h1 class="name">La Phuong Thao</h1>
         <div class="title">Student · International Business Economics · FTU</div>
-        <div class="links" style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="links">
           <a class="pill" href="mailto:laphuongthao1561@gmail.com">Email</a>
           <a class="pill" href="#projects">Projects</a>
           <a class="pill" href="#contact">Contact</a>
@@ -441,14 +618,11 @@
       </div>
     </header>
 
-    <!-- MAIN -->
     <main>
       <section>
-
-        <!-- ABOUT -->
         <div class="card" id="about">
           <div class="section-head">
-            <h2 style="margin:0">About Me</h2>
+            <h2>About Me</h2>
           </div>
           <p style="margin-top:14px">
             I am an International Economics student at Foreign Trade University (FTU) with a strong interest in addressing real-world challenges related to economic, environmental, and social impact.
@@ -456,74 +630,52 @@
           </p>
         </div>
 
-        <!-- EXPERIENCE & PROJECTS -->
         <div id="projects" class="card" style="margin-top:16px">
           <div class="section-head">
-            <h2 style="margin:0">Experience & Projects</h2>
+            <h2>Experience & Projects</h2>
           </div>
 
-          <div class="showcase-grid two" style="margin-top:14px">
-
-            <!-- Card 1 -->
+          <div class="showcase-grid two">
             <article class="cardx lavender">
               <div class="thumb">
                 <img src="images/yrc_git.png" alt="Young Researchers Club FTU">
               </div>
-
               <h3 class="title">Young Researchers Club (YRC FTU)</h3>
-
-              <p class="meta">
-                Member | <span class="time">2023 – 2024</span>
-              </p>
-
+              <p class="meta">Member | <span class="time">2023 – 2024</span></p>
               <p class="desc">
                 Participated in academic research activities, data collection,
                 and basic data analysis for student research projects.
               </p>
-
               <div class="tags">
                 <span class="tag">Research</span>
                 <span class="tag">Data Analysis</span>
               </div>
             </article>
 
-            <!-- Card 2 -->
             <article class="cardx mint">
               <div class="thumb">
                 <img src="images/tcn.jpg" alt="Letters from the Sun Volunteer Event">
               </div>
-
               <h3 class="title">Letters from the Sun</h3>
-
-              <p class="meta">
-                Volunteer – FTU Youth Union
-              </p>
-
+              <p class="meta">Volunteer – FTU Youth Union</p>
               <p class="desc">
                 Volunteer program organized by the FTU Youth Union,
-                supporting coordination, and participant guidance.
+                supporting coordination and participant guidance.
               </p>
-
               <div class="tags">
                 <span class="tag">Volunteering</span>
                 <span class="tag">Community</span>
               </div>
             </article>
-
           </div>
         </div>
 
-        <!-- Projects anchor (menu target) -->
-
-        <!-- SKILLS & CERTS -->
         <div id="skills" class="card" style="margin-top:16px">
           <div class="section-head">
-            <h2 style="margin:0">Skills & Certs</h2>
+            <h2>Skills & Certs</h2>
           </div>
 
-          <div class="skill-grid" style="margin-top:14px">
-
-            <!-- Tech Stack -->
+          <div class="skill-grid">
             <article class="mini-card orange">
               <div class="mini-ico">⌘</div>
               <div class="mini-title">Technology Skills</div>
@@ -533,7 +685,6 @@
               </div>
             </article>
 
-            <!-- Tools -->
             <article class="mini-card teal">
               <div class="mini-ico">🛠</div>
               <div class="mini-title">Tools</div>
@@ -544,7 +695,6 @@
               </div>
             </article>
 
-            <!-- Certificates -->
             <article class="mini-card purple">
               <div class="mini-ico">✳</div>
               <div class="mini-title">Certificates</div>
@@ -553,64 +703,52 @@
                 <li>Design Basics</li>
               </ul>
             </article>
-
           </div>
         </div>
 
-        <!-- CONTACT -->
         <div id="contact" class="card wide" style="margin-top:16px">
           <div class="section-head">
-            <h2 style="margin:0">Contact</h2>
+            <h2>Contact</h2>
           </div>
 
-          <div class="skill-grid contact-grid" style="margin-top:14px">
-
-            <!-- Email -->
+          <div class="skill-grid contact-grid">
             <article class="mini-card orange">
-  <div class="mini-ico">✉</div>
-  <div class="mini-title">Email</div>
-  <ul class="mini-list">
-    <li>laphuongthao1561@gmail.com</li>
-  </ul>
-</article>
+              <div class="mini-ico">✉</div>
+              <div class="mini-title">Email</div>
+              <ul class="mini-list">
+                <li>
+                  <a class="linkx" href="mailto:laphuongthao1561@gmail.com">
+                    laphuongthao1561@gmail.com
+                  </a>
+                </li>
+              </ul>
+            </article>
 
-            <!-- LinkedIn -->
             <article class="mini-card teal">
-  <div class="mini-ico">in</div>
+              <div class="mini-ico">in</div>
+              <div class="mini-title">
+                <a class="linkx" href="https://www.linkedin.com/in/l%C3%A3-ph%C6%B0%C6%A1ng-th%E1%BA%A3o-166783228/" target="_blank" rel="noopener">
+                  LinkedIn
+                </a>
+              </div>
+            </article>
 
-  <div class="mini-title">
-    <a class="linkx" href="https://www.linkedin.com/in/l%C3%A3-ph%C6%B0%C6%A1ng-th%E1%BA%A3o-166783228/" target="_blank" rel="noopener">
-      LinkedIn
-    </a>
-  </div>
-
-</article>
-
-
-            <!-- Facebook -->
             <article class="mini-card purple">
-  <div class="mini-ico">f</div>
-
-  <div class="mini-title">
-    <a class="linkx" href="https://www.facebook.com/lathaoor/" target="_blank" rel="noopener">
-      Facebook
-    </a>
-  </div>
-
-</article>
-
-
+              <div class="mini-ico">f</div>
+              <div class="mini-title">
+                <a class="linkx" href="https://www.facebook.com/lathaoor/" target="_blank" rel="noopener">
+                  Facebook
+                </a>
+              </div>
+            </article>
           </div>
         </div>
-
       </section>
     </main>
 
-    <!-- ✅ only footer text keeps non-black color -->
-    <footer style="margin-top:36px;padding:18px;text-align:center;color:#b7c6e3;font-size:14px">
+    <footer>
       Built by a cute person ✦
     </footer>
-
   </div>
 
   <script>
@@ -620,7 +758,7 @@
       if(!q) return false;
 
       const scope = document.querySelector('.wrap');
-      const els = scope.querySelectorAll('h2, h1, p, li, .title, .authors');
+      const els = scope.querySelectorAll('h2, h1, h3, p, li, .title, .mini-title');
       for (const el of els){
         const t = (el.textContent || '').toLowerCase();
         if (t.includes(q)){
@@ -634,6 +772,5 @@
       return false;
     }
   </script>
-
 </body>
 </html>
