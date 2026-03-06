@@ -16,12 +16,10 @@
       --text:#000;
       --muted:#4b5563;
       --card:rgba(255,255,255,0.94);
-      --white:#fff;
       --border:#1f1f1f;
-      --shadow:rgba(0,0,0,0.18);
       --navbar:#d9c6ff;
       --radius:16px;
-      --maxw:1200px;
+      --maxw:1080px;
       font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
@@ -187,7 +185,7 @@
     }
 
     .wrap{
-      max-width:1080px;
+      max-width:var(--maxw);
       margin:22px auto 34px;
       padding:20px 28px;
     }
@@ -395,6 +393,49 @@
       max-width:760px;
     }
 
+    .photo{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+    }
+
+    .photo::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 34%,
+        rgba(255,255,255,0.38) 52%,
+        rgba(255,255,255,0) 72%
+      );
+      opacity:0.72;
+      pointer-events:none;
+    }
+
+    .photo::before{
+      content:"";
+      position:absolute;
+      top:-40%;
+      left:-70%;
+      width:70%;
+      height:190%;
+      background:linear-gradient(
+        120deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0.28),
+        rgba(255,255,255,0)
+      );
+      transform:rotate(18deg);
+      opacity:0;
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .photo:hover::before{
+      animation:shine 1s ease;
+    }
+
     .about-grid img{
       width:100%;
       height:220px;
@@ -406,9 +447,9 @@
       transition:transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
     }
 
-    .about-grid img:hover{
-      transform:translateY(-4px) scale(1.02) rotate(-1deg);
-      filter:brightness(1.04);
+    .photo:hover img{
+      transform:translateY(-4px) scale(1.03) rotate(-1deg);
+      filter:brightness(1.05);
       box-shadow:12px 12px 0 rgba(0,0,0,0.16);
     }
 
@@ -420,6 +461,20 @@
       100%{
         opacity:1;
         transform:translateY(0) scale(1);
+      }
+    }
+
+    @keyframes shine{
+      0%{
+        left:-80%;
+        opacity:0;
+      }
+      25%{
+        opacity:1;
+      }
+      100%{
+        left:130%;
+        opacity:0;
       }
     }
 
@@ -472,9 +527,48 @@
     }
 
     .cardx .thumb{
+      position:relative;
       border:3px solid var(--border);
       border-radius:18px;
       overflow:hidden;
+    }
+
+    .cardx .thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 36%,
+        rgba(255,255,255,0.26) 52%,
+        rgba(255,255,255,0) 72%
+      );
+      opacity:0.66;
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .cardx .thumb::before{
+      content:"";
+      position:absolute;
+      top:-30%;
+      left:-65%;
+      width:65%;
+      height:180%;
+      background:linear-gradient(
+        120deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0.22),
+        rgba(255,255,255,0)
+      );
+      transform:rotate(18deg);
+      opacity:0;
+      pointer-events:none;
+      z-index:3;
+    }
+
+    .cardx:hover .thumb::before{
+      animation:shine 1s ease;
     }
 
     .cardx .thumb img{
@@ -769,10 +863,42 @@
           <div class="section-head">
             <h2>About Me</h2>
           </div>
+
           <p style="margin-top:14px">
             I am an International Economics student at Foreign Trade University (FTU) with a strong interest in addressing real-world challenges related to economic, environmental, and social impact.
             My studies focus on international trade, logistics, digital transformation, and data-driven economic analysis.
           </p>
+
+          <div class="about-actions">
+            <button class="about-toggle hobby-btn" type="button" onclick="toggleAboutGallery('hobbyGallery')">
+              Hobby
+            </button>
+            <button class="about-toggle music-btn" type="button" onclick="toggleAboutGallery('musicGallery')">
+              Music
+            </button>
+          </div>
+
+          <div id="hobbyGallery" class="about-gallery">
+            <div class="about-grid">
+              <div class="photo">
+                <img src="images/hobby1.jpg" alt="Hobby photo 1">
+              </div>
+              <div class="photo">
+                <img src="images/hobby2.jpg" alt="Hobby photo 2">
+              </div>
+            </div>
+          </div>
+
+          <div id="musicGallery" class="about-gallery">
+            <div class="about-grid">
+              <div class="photo">
+                <img src="images/music1.jpg" alt="Music photo 1">
+              </div>
+              <div class="photo">
+                <img src="images/music2.jpg" alt="Music photo 2">
+              </div>
+            </div>
+          </div>
         </div>
 
         <div id="projects" class="card" style="margin-top:16px">
@@ -897,6 +1023,21 @@
   </div>
 
   <script>
+    function toggleAboutGallery(id){
+      const galleries = document.querySelectorAll('.about-gallery');
+
+      galleries.forEach(gallery => {
+        if(gallery.id !== id){
+          gallery.classList.remove('show');
+        }
+      });
+
+      const selected = document.getElementById(id);
+      if(selected){
+        selected.classList.toggle('show');
+      }
+    }
+
     function doSearch(e){
       e.preventDefault();
       const q = (document.getElementById('siteSearch').value || '').trim().toLowerCase();
